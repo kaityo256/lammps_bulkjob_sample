@@ -1,3 +1,4 @@
 data/T*
 slurm*.out
 log.lammps
+*.sh
