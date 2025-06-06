@@ -5,7 +5,7 @@ def save_jobfile(temp_array):
     str = ""
     for temperature in temp_array:
         prefix = f"T{int(temperature*100):03d}"
-        str += f"srun --exclusive --mem-per-cpu=1840 -n 128 -c 1 lammps < {prefix}/{prefix}.input &\n"
+        str += f"srun --exclusive --mem-per-cpu=1840 -N 1 -n 128 -c 1 lammps < {prefix}/{prefix}.input &\n"
         str += f"sleep 5\n"
     content = f"""\
 #!/bin/sh
@@ -13,10 +13,14 @@ def save_jobfile(temp_array):
 #SBATCH -p i8cpu
 #SBATCH -N 8
 
+
 source /home/issp/materiapps/intel/lammps/lammpsvars.sh
+SECONDS=0
+
 {str}
 wait
 """
+    content += 'echo "Elapsed time: ${SECONDS} seconds"\n'
     filename = "data/job8.sh"
     with open("data/job8.sh", "w") as f:
         f.write(content)

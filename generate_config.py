@@ -71,8 +71,8 @@ pair_coeff 1 1 1.0 1.0 3.0
 
 fix 1 all nvt temp {temperature} {temperature} 1
 log {prefix}/{prefix}.log
-thermo 100
-run 1000
+thermo 1000
+run 10000
 """
     with open(filename, "w") as f:
         f.write(content)
@@ -81,7 +81,7 @@ run 1000
 
 def save_files(density, temperature):
     S = (4.0 / density) ** (1.0 / 3.0)  # Lattice Constant
-    M = 10  # Lattice Count
+    M = 50  # Lattice Count
     N = M**3 * 4
     L = M * S  # Lattice Size
     atoms = make_config(M, S)
