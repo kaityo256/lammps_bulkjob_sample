@@ -58,7 +58,7 @@ def main():
     for t in temp_array:
         cmd = ["python3", "generate_config.py", "-d", str(density), "-t", str(t)]
         print(f"Running: {' '.join(cmd)}")
-        # subprocess.run(cmd, check=True)
+        subprocess.run(cmd, check=True)
 
 
 if __name__ == "__main__":
