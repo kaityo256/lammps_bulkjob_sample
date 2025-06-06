@@ -11,6 +11,7 @@ def save_serialjobfile(temp_array):
 
 #SBATCH -p i8cpu
 #SBATCH -N 1
+#SBATCH -n 128
 
 source /home/issp/materiapps/intel/lammps/lammpsvars.sh
 SECONDS=0

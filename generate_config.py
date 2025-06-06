@@ -69,7 +69,7 @@ mass 1 1.0
 pair_style lj/cut 3.0
 pair_coeff 1 1 1.0 1.0 3.0
 
-fix 1 all nvt temp {temperature} {temperature} 1
+fix 1 all nvt temp {temperature} {temperature} 0.1
 log {prefix}/{prefix}.log
 thermo 1000
 run 10000
